@@ -8,6 +8,7 @@ export default {
   <header class="header">
     <nav class="nav">
       <router-link to="/todo">Todo page</router-link>
+      <router-link to="/counter">Vuex counter</router-link>
       <router-link to="/form">Form page</router-link>
     </nav>
   </header>
