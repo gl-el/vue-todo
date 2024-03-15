@@ -1,11 +1,17 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
   <div id="app">
     <header>
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+      <img
+        alt="Vue logo"
+        class="logo"
+        src="@/assets/logo.svg"
+        width="125"
+        height="125"
+      />
 
       <div class="wrapper">
         <HelloWorld msg="You did it!" />
@@ -13,6 +19,7 @@ import HelloWorld from './components/HelloWorld.vue'
         <nav>
           <router-link to="/">Home</router-link>
           <router-link to="/about">About</router-link>
+          <router-link to="/todo">Todo page</router-link>
         </nav>
       </div>
     </header>
