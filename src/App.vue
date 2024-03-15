@@ -9,6 +9,4 @@ import AppNav from "@/router/AppNav.vue";
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
