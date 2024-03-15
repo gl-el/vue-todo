@@ -18,7 +18,12 @@ export default {
 
 <template>
   <div>
-    <input type="text" v-model="newTodo" placeholder="Enter a new todo" />
+    <input
+      type="text"
+      v-model="newTodo"
+      placeholder="Enter a new todo"
+      @keyup.enter="addTodo"
+    />
     <button @click="addTodo">Add</button>
   </div>
 </template>
