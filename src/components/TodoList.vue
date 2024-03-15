@@ -13,6 +13,9 @@ export default {
     deleteTodo(index) {
       this.$emit("delete", index);
     },
+    checkTodo(index) {
+      this.$emit("check", index);
+    },
   },
 };
 </script>
@@ -21,8 +24,13 @@ export default {
   <div class="wrapper">
     <h2 class="green heading">Todo List</h2>
     <ul class="list">
-      <li class="item" v-for="(todo, index) in todos" :key="index">
-        <TodoItem :todo="todo" @delete="deleteTodo(index)" />
+      <li class="item" v-for="(item, index) in todos" :key="index">
+        <TodoItem
+          :todo="item.title"
+          :done="item.done"
+          @delete="deleteTodo(index)"
+          @check="checkTodo(index)"
+        />
       </li>
     </ul>
   </div>
@@ -38,9 +46,12 @@ export default {
 }
 
 .list {
-  width: 80%;
+  width: 100%;
   padding: 0;
   list-style: none;
-  text-align: center;
+}
+
+.item {
+  margin-top: 10px;
 }
 </style>

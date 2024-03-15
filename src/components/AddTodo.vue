@@ -8,7 +8,7 @@ export default {
   methods: {
     addTodo() {
       if (this.newTodo.trim() !== "") {
-        this.$emit("add", this.newTodo);
+        this.$emit("add", { title: this.newTodo, done: true });
         this.newTodo = "";
       }
     },

@@ -1,5 +1,5 @@
 <script setup>
-import AppNav from "@/components/AppNav.vue";
+import AppNav from "@/router/AppNav.vue";
 </script>
 
 <template>
