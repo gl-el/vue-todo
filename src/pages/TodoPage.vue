@@ -8,7 +8,7 @@ export default {
   },
   data() {
     return {
-      todos: [],
+      todos: ["default value 1", "default value 2"],
     };
   },
   methods: {
@@ -16,13 +16,16 @@ export default {
       this.todos.push(todo);
       console.log("New todo:", todo, "All todos:", this.todos);
     },
+    deleteTodo(index) {
+      this.todos.splice(index, 1);
+    },
   },
 };
 </script>
 
 <template>
   <div class="wrapper">
-    <TodoList :todos="todos"></TodoList>
+    <TodoList :todos="todos" @delete="deleteTodo"></TodoList>
     <AddTodo @add="addTodo"></AddTodo>
   </div>
 </template>
