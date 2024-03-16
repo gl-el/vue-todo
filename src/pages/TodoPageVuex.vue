@@ -1,43 +1,53 @@
 <script>
-import TodoItemVuex from "@/components/TodoItemVuex.vue";
-import { mapActions } from "vuex";
+import TodoListVuex from "@/components/TodoListVuex.vue";
+import AddTodoVuex from "@/components/AddTodoVuex.vue";
+import { mapGetters } from "vuex";
+import FilterTodos from "@/components/FilterTodos.vue";
 
 export default {
   name: "TodoPageVuex",
-  components: { TodoItemVuex },
+  components: { FilterTodos, AddTodoVuex, TodoListVuex },
+  data() {
+    return {
+      selectedFilter: "all",
+    };
+  },
   computed: {
-    todos() {
-      return this.$store.state.todos.items;
+    ...mapGetters("todos", ["allTodos", "completedTodos", "activeTodos"]),
+    filteredTodos() {
+      switch (this.selectedFilter) {
+        case "all":
+          return this.allTodos;
+        case "completed":
+          return this.completedTodos;
+        case "active":
+          return this.activeTodos;
+        default:
+          return this.allTodos;
+      }
     },
   },
   methods: {
-    ...mapActions("todos", ["addTodo"]),
-    addItem(e) {
-      const text = e.target.value;
-      this.addTodo(text);
+    selectFilter(filter) {
+      this.selectedFilter = filter;
     },
   },
 };
 </script>
 
 <template>
-  <div>
-    <input
-      class="new-todo"
-      autofocus
-      placeholder="Add new item"
-      @keyup.enter="addItem"
-    />
-    <ul class="list">
-      <li v-for="(todo, index) in todos" :key="index">
-        <TodoItemVuex :todo="todo" />
-      </li>
-    </ul>
+  <div class="wrapper">
+    <AddTodoVuex />
+    <TodoListVuex :todos="filteredTodos" />
+    <FilterTodos @select="selectFilter" />
   </div>
 </template>
 
 <style scoped>
-.list {
-  list-style: none;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
 }
 </style>
