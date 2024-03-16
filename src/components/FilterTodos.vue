@@ -1,6 +1,9 @@
 <script>
+import StyledButton from "@/components/controls/StyledButton.vue";
+
 export default {
   name: "FilterTodos",
+  components: { StyledButton },
   methods: {
     selectFilter(filter) {
       this.$emit("select", filter);
@@ -10,11 +13,18 @@ export default {
 </script>
 
 <template>
-  <div>
-    <button @click="selectFilter('all')">All Todos</button>
-    <button @click="selectFilter('completed')">Completed Todos</button>
-    <button @click="selectFilter('active')">Active Todos</button>
+  <div class="controls">
+    <StyledButton @click="selectFilter('all')"> All Todos </StyledButton>
+    <StyledButton @click="selectFilter('completed')">
+      Completed Todos
+    </StyledButton>
+    <StyledButton @click="selectFilter('active')"> Active Todos </StyledButton>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.controls {
+  display: flex;
+  gap: 10px;
+}
+</style>

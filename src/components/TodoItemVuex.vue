@@ -1,8 +1,11 @@
 <script>
 import { mapActions } from "vuex";
+import StyledTextInput from "@/components/controls/StyledTextInput.vue";
+import StyledButton from "@/components/controls/StyledButton.vue";
 
 export default {
   name: "TodoItemVuex",
+  components: { StyledButton, StyledTextInput },
   props: ["todo"],
   data() {
     return {
@@ -28,6 +31,9 @@ export default {
       this.editTodoText({ item: this.todo, newText: this.newText });
       this.isEdit = false;
     },
+    updateInput(value) {
+      this.newText = value;
+    },
   },
 };
 </script>
@@ -35,18 +41,20 @@ export default {
 <template>
   <div class="wrapper">
     <input type="checkbox" :checked="todo.done" @change="toggleStatus(todo)" />
-    <label>
-      <input
+    <div>
+      <StyledTextInput
         ref="todoInput"
-        type="text"
-        v-model="newText"
-        :disabled="isEdit !== true"
+        :value="newText"
+        @input="updateInput"
         :class="{ through: todo.done }"
+        :disabled="isEdit !== true"
       />
-      <button @click="isEdit = !isEdit" v-show="isEdit === false">Edit</button>
-      <button v-show="isEdit" @click="save">Save</button>
-    </label>
-    <button @click="removeTodo(todo)">Remove</button>
+      <StyledButton @click="isEdit = !isEdit" v-show="isEdit === false">
+        Edit
+      </StyledButton>
+      <StyledButton v-show="isEdit" @click="save">Save</StyledButton>
+    </div>
+    <StyledButton @click="removeTodo(todo)">Remove</StyledButton>
   </div>
 </template>
 
