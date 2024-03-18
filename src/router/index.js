@@ -4,6 +4,7 @@ import TodoPage from "@/pages/TodoPage.vue";
 import CounterPage from "@/pages/CounterPage.vue";
 import TodoPageVuex from "@/pages/TodoPageVuex.vue";
 import FormPage from "@/pages/FormPage.vue";
+import PostsPage from "@/pages/PostsPage.vue";
 
 Vue.use(VueRouter);
 
@@ -31,6 +32,11 @@ const router = new VueRouter({
       component: TodoPageVuex,
     },
     { path: "/form", name: "form-page", component: FormPage },
+    {
+      path: "/posts",
+      name: "posts",
+      component: PostsPage,
+    },
   ],
 });
 

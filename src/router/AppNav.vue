@@ -11,6 +11,7 @@ export default {
       <router-link to="/todo-vuex">Todo page with Vuex</router-link>
       <router-link to="/counter">Vuex counter</router-link>
       <router-link to="/form">Form page</router-link>
+      <router-link to="/posts">Posts</router-link>
     </nav>
   </header>
 </template>
